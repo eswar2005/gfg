@@ -13,15 +13,12 @@ class Node:
 class Solution:
     def reverseList(self, head):
         # Code 
-        temp=head
-        l=[]
-        while temp:
-            l.append(temp.data)
-            temp=temp.next
-        l=l[::-1]
-        head=Node(l[0])
-        curr=head
-        for i in l[1:]:
-            curr.next=Node(i)
-            curr=curr.next
-        return head
+        current=head
+        prev=None
+        while current:
+            next_node=current.next
+            current.next=prev
+            prev=current
+            current=next_node
+        return prev
+            
